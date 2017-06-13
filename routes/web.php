@@ -24,5 +24,9 @@ Route::get('/login',function(){
     return view('login');
 });
 
+Route::get('/logout', 'AccountController@logout');
+Route::get('/profile', function(){
+    return view('profile');
+});
 Route::post('/insertregister','AccountController@register');
 Route::post('/dologin','AccountController@login');

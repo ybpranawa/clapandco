@@ -18,7 +18,8 @@ class AccountController extends Controller
         $date = Carbon::createFromFormat('Y-m-d', $now);
         DB::insert('insert into login_user (user_id, user_passwd, login_time) values("'.$uname.'","'.md5($passwd).'", "'.$date.'")');
         DB::insert('insert into user_profile (user_id, user_email) values("'.$uname.'","'.$email.'")');
-        echo "sukses";
+        //echo "sukses";
+        return view('login');
     }
     
     public function login(Request $request){
@@ -30,11 +31,18 @@ class AccountController extends Controller
             $now=date('Y-m-d H:i:s');
             DB::update('update login_user set login_ip="'.$ipaddr.'", login_time="'.$now.'"');
             $request->session()->put('username',$uname);
-            echo  $request->session()->get('username');
-            echo "berhasil";
+            //echo  $request->session()->get('username');
+            //echo "berhasil";
+            return view('homepage');
         }
         else{
-            echo "salah";
+            //echo "salah";
+            return view('login');
         }
+    }
+    
+    public function logout(Request $request){
+        $request->session()->forget('username');
+        return view('homepage');
     }
 }
