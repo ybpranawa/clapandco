@@ -31,8 +31,10 @@ Route::get('/profile', function(){
 Route::get('/dashboard',function(){
     return view('personal/dashboard');
 });
-Route::get('/catalog',function(){
+/*Route::get('/catalog',function(){
     return view('personal/catalog');
-});
+});*/
+Route::get('/catalog','ProductController@getcatalog');
+
 Route::post('/insertregister','AccountController@register');
 Route::post('/dologin','AccountController@login');
