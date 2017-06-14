@@ -26,7 +26,13 @@ Route::get('/login',function(){
 
 Route::get('/logout', 'AccountController@logout');
 Route::get('/profile', function(){
-    return view('profile');
+    return view('personal/profile');
+});
+Route::get('/dashboard',function(){
+    return view('personal/dashboard');
+});
+Route::get('/catalog',function(){
+    return view('personal/catalog');
 });
 Route::post('/insertregister','AccountController@register');
 Route::post('/dologin','AccountController@login');
