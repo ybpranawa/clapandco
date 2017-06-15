@@ -35,6 +35,7 @@ Route::get('/dashboard',function(){
     return view('personal/catalog');
 });*/
 Route::get('/catalog','ProductController@getcatalog');
+Route::get('/removeproduct','ProductController@removeproduct');
 
 Route::post('/insertregister','AccountController@register');
 Route::post('/dologin','AccountController@login');

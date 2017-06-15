@@ -85,6 +85,7 @@
             });
         });
         </script>
+        
         <style type="text/css">
             * {
               box-sizing: border-box;
@@ -191,6 +192,21 @@
             }
 
         </style>
+        <style>
+            .example-modal .modal {
+              position: relative;
+              top: auto;
+              bottom: auto;
+              right: auto;
+              left: auto;
+              display: block;
+              z-index: 1;
+            }
+
+            .example-modal .modal {
+              background: transparent !important;
+            }
+          </style>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="header">
@@ -314,7 +330,7 @@
 						</ul>
 					</div>
 					</nav>
-					 <div class="cart" >
+				    <div class="cart" >
 						<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>
 					</div>
 					<div class="clearfix"></div>
@@ -463,67 +479,85 @@
 
         
         
-<!-- smooth scrolling -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-		/*
-			var defaults = {
-			containerID: 'toTop', // fading element id
-			containerHoverID: 'toTopHover', // fading element hover id
-			scrollSpeed: 1200,
-			easingType: 'linear' 
-			};
-		*/								
-		$().UItoTop({ easingType: 'easeOutQuart' });
-		});
-	</script>
-	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-<!-- //smooth scrolling -->
-<!-- for bootstrap working -->
+        <!-- smooth scrolling -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear' 
+                };
+            */								
+            $().UItoTop({ easingType: 'easeOutQuart' });
+            });
+        </script>
+        <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+        <!-- //smooth scrolling -->
+        <!-- for bootstrap working -->
 		<script src="{{ URL::asset('assets/js/bootstrap.js')}}"></script>
-<!-- //for bootstrap working -->
-<script type='text/javascript' src="{{ URL::asset('assets/js/jquery.mycart.js')}}"></script>
-  <script type="text/javascript">
-  $(function () {
+        <!-- //for bootstrap working -->
+        <script type='text/javascript' src="{{ URL::asset('assets/js/jquery.mycart.js')}}"></script>
+        <script type="text/javascript">
+            $(function () {
 
-    var goToCartIcon = function($addTocartBtn){
-      var $cartIcon = $(".my-cart-icon");
-      var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({"position": "fixed", "z-index": "999"});
-      $addTocartBtn.prepend($image);
-      var position = $cartIcon.position();
-      $image.animate({
-        top: position.top,
-        left: position.left
-      }, 500 , "linear", function() {
-        $image.remove();
-      });
-    }
+            var goToCartIcon = function($addTocartBtn){
+              var $cartIcon = $(".my-cart-icon");
+              var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({"position": "fixed", "z-index": "999"});
+              $addTocartBtn.prepend($image);
+              var position = $cartIcon.position();
+              $image.animate({
+                top: position.top,
+                left: position.left
+              }, 500 , "linear", function() {
+                $image.remove();
+              });
+            }
 
-    $('.my-cart-btn').myCart({
-      classCartIcon: 'my-cart-icon',
-      classCartBadge: 'my-cart-badge',
-      affixCartIcon: true,
-      checkoutCart: function(products) {
-        $.each(products, function(){
-          console.log(this);
-        });
-      },
-      clickOnAddToCart: function($addTocart){
-        goToCartIcon($addTocart);
-      },
-      getDiscountPrice: function(products) {
-        var total = 0;
-        $.each(products, function(){
-          total += this.quantity * this.price;
-        });
-        return total * 1;
-      }
-    });
+            $('.my-cart-btn').myCart({
+              classCartIcon: 'my-cart-icon',
+              classCartBadge: 'my-cart-badge',
+              affixCartIcon: true,
+              checkoutCart: function(products) {
+                $.each(products, function(){
+                  console.log(this);
+                });
+              },
+              clickOnAddToCart: function($addTocart){
+                goToCartIcon($addTocart);
+              },
+              getDiscountPrice: function(products) {
+                var total = 0;
+                $.each(products, function(){
+                  total += this.quantity * this.price;
+                });
+                return total * 1;
+              }
+            });
 
-  });
-  </script>
-        <!-- jQuery 3.1.1 -->
-        <script src="{{URL::asset('admin/plugins/jQuery/jquery-3.1.1.min.js')}}"></script>
+            });
+        </script>     
+        <script type="text/javascript">
+            $('#myModal').on('show', function() {
+                var id = $(this).data('id'),
+                    removeBtn = $(this).find('.danger');
+            })
+
+            $('.confirm-delete').on('click', function(e) {
+                e.preventDefault();
+
+                var id = $(this).data('id');
+                $('#myModal').data('id', id).modal('show');
+            });
+
+            $('#btnYes').click(function() {
+                // handle deletion here
+                var id = $('#myModal').data('id');
+                $('[data-id='+id+']').remove();
+                $('#myModal').modal('hide');
+            });
+        </script>
         <!-- jQuery UI 1.11.4 -->
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

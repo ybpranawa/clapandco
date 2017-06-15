@@ -21,4 +21,10 @@ class ProductController extends Controller
         }*/
         return view('personal/catalog',['query'=>$query]);
     }
+    
+    public function removeproduct(Request $request){
+        $product_id=$request->input('product_id');
+        DB::delete('delete from product_cat where product_id="'.$product_id.'" ');
+        return redirect()->action('ProductController@getcatalog');
+    }
 }
