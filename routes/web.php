@@ -36,6 +36,9 @@ Route::get('/dashboard',function(){
 });*/
 Route::get('/catalog','ProductController@getcatalog');
 Route::get('/removeproduct','ProductController@removeproduct');
+Route::get('/addproduct', 'ProductController@addproduct');
+Route::get('/orderlist','ProductController@orderlist');
 
 Route::post('/insertregister','AccountController@register');
 Route::post('/dologin','AccountController@login');
+Route::post('/doupload','ProductController@doupload');

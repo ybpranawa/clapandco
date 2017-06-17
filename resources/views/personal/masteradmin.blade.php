@@ -14,8 +14,25 @@
         <!-- Custom Theme files -->
         <link href="{{ URL::asset('assets/css/style.css')}}" rel='stylesheet' type='text/css' />
         <!-- js -->
-           <script src="{{ URL::asset('assets/js/jquery-1.11.1.min.js')}}"></script>
-        <!-- //js -->
+        <script src="{{ URL::asset('assets/js/jquery-1.11.1.min.js')}}"></script>
+
+        <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+        
+        <script>
+          $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+              "paging": true,
+              "lengthChange": false,
+              "searching": false,
+              "ordering": true,
+              "info": true,
+              "autoWidth": false
+            });
+          });
+        </script>
+        
         <!-- start-smoth-scrolling -->
         <script type="text/javascript" src="{{ URL::asset('assets/js/move-top.js')}}"></script>
         <script type="text/javascript" src="{{ URL::asset('assets/js/easing.js')}}"></script>
@@ -38,6 +55,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="{{URL::asset('admin/plugins/datatables/dataTables.bootstrap.css')}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{URL::asset('admin/dist/css/AdminLTE.min.css')}}">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -367,6 +386,7 @@
                       <ul class="treeview-menu">
                         <li><a href="profile"><i class="fa fa-circle-o"></i> Summary</a></li>
                         <li><a href="editprofile"><i class="fa fa-circle-o"></i> Edit Profile</a></li>
+                        <li><a href="editprofile"><i class="fa fa-circle-o"></i> Ubah Password</a></li>
                       </ul>
                     </li>
                       <li class="treeview">
@@ -378,8 +398,9 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
+                        <li><a href="orderlist"><i class="fa fa-circle-o"></i> Daftar Pesanan</a></li>
                         <li><a href="catalog"><i class="fa fa-circle-o"></i> Katalog Produk</a></li>
-                        <li><a href="editcatalog"><i class="fa fa-circle-o"></i> Edit Katalog</a></li>
+                        <li><a href="addproduct"><i class="fa fa-circle-o"></i> Tambah Produk</a></li>
                       </ul>
                     </li>
                       <li class="treeview">
@@ -592,5 +613,6 @@
         <script src="{{URL::asset('admin/dist/js/pages/dashboard.js')}}"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="{{URL::asset('admin/dist/js/demo.js')}}"></script>
+
     </body>
 </html>

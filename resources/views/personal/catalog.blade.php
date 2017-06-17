@@ -6,10 +6,17 @@ $title='Catalog';
 @section('content')
 @if ($query==NULL)
 <section class="content">
-  <h1>
-    NO DATA
-    <small>Belum terdapat katalog produk</small>
-  </h1>
+    <div class="row">
+        <div class="col-md-10">
+            <h1>
+                NO DATA
+                <small>Belum terdapat katalog produk</small>
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <a href="addproduct" type="button" class="btn btn-block btn-warning btn-lg"><i class="fa fa-plus"></i>Tambah Produk</a>
+        </div>
+    </div>
 </section>
 @else
 <ul class="cardds">
