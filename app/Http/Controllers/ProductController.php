@@ -46,15 +46,35 @@ class ProductController extends Controller
         if($prodstock>0)
             $prodstat='prodstat1';
         
+        DB::insert('insert into product_cat (product_id, product_name, product_desc, product_stock, product_status, product_timedev, type_id, user_id, product_price) values ("'.$prodid.'","'.$prodname.'","'.$proddesc.'","'.$prodstock.'","'.$prodstat.'","'.$prodtime.'","'.$prodtype.'","'.$username.'",
+        "'.$prodprice.'")');
+        
         $req=$request->file('product_pict');
         if (!empty($req)){
             $counter=0;
             foreach ($req as $image){
                 $extension[$counter]=$image->getClientOriginalExtension();
                 $image->move('product_pict/'.$username,'product_pict'.$counter.'_'.$prodname.'.'.$extension[$counter]);
-                $imglocation[]='product_pict'.$counter.'_'.$prodname.'.'.$extension[$counter];
+                $imglocation[]='product_pict/'.$username.'/product_pict'.$counter.'_'.$prodname.'.'.$extension[$counter];
+                $count=$counter+1;
+                DB::update("update product_cat set product_pict$count='".$imglocation[$counter]."' where product_id='".$prodid."' ");
                 $counter++;
+                
             }
         }
+        return redirect()->action('ProductController@getcatalog');
+    }
+    
+    public function editproduct(Request $request){
+        $username=$request->session()->get('username');
+        $prodid=$request->input('product_id');
+        $query=DB::select('select * from product_cat where product_id="'.$prodid.'" ');
+        return view('personal/editproductform',['query'=>$query[0]]);
+        //var_dump($query);
+        //echo $query[0]->product_id;
+    }
+    
+    public function doedit(Request $request){
+        
     }
 }

@@ -38,6 +38,7 @@ Route::get('/catalog','ProductController@getcatalog');
 Route::get('/removeproduct','ProductController@removeproduct');
 Route::get('/addproduct', 'ProductController@addproduct');
 Route::get('/orderlist','ProductController@orderlist');
+Route::get('/editproduct','ProductController@editproduct');
 
 Route::post('/insertregister','AccountController@register');
 Route::post('/dologin','AccountController@login');

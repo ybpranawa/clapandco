@@ -21,13 +21,12 @@ $title='Catalog';
 @else
 <ul class="cardds">
     @foreach ($query as $data)
-      <li class="cardd" data-id="{{$dataid}}">
+      <li class="cardd" data-id="{{$data->product_id}}">
         <div class="cardd__inner">
           <h2>{{$data->product_name}} <small>Product Name</small></h2>
           <div class="cardd__buttons">
-            <a href="#">Edit</a>
-            <!--<a href="#" class="confirm-delete" data-id="{{$dataid}}">Delete</a>-->
-              <a href="removeproduct?product_id={{$data->product_id}}">Delete</a>
+            <a href="editproduct?product_id={{$data->product_id}}">Edit</a>
+            <a href="removeproduct?product_id={{$data->product_id}}">Delete</a>
           </div>
         </div>
         <ul class="cardd__icons">
