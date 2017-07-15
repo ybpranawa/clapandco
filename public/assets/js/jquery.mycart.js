@@ -192,6 +192,7 @@
         '</div>' +
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
+        '<a href="checkout" type="button" class="btn btn-Danger">Checkout</a>'+
 
         '</div>' +
         '</div>' +

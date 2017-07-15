@@ -18,6 +18,7 @@ $title='Edit Product'
             <!-- form start -->
             <form role="form" class="form-horizontal" action="doedit" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
+                <input type="hidden" name="product_id" value="{{$query->product_id}}">
               <div class="box-body">
                 <div class="form-group">
                   <label for="product_name" class="col-sm-2 control-label">Nama Produk</label>
@@ -51,7 +52,7 @@ $title='Edit Product'
                   <label for="product_type" class="col-sm-2 control-label">Tipe</label>
                   <div class="col-sm-10">
                       <select class="form-control" name="product_type" required>
-                        
+                          <option value="{{$query->type_id}}">{{ $query->type_id }}</option>                          
                       </select>
                   </div>
                 </div>

@@ -333,5 +333,12 @@
 
         });
         </script>
+        
+        <script type="text/javascript">
+            function showModal(data){
+                $("#myModal100 .modal-title").html('data')
+                $("#myModal100").modal();
+            }
+        </script>
     </body>
 </html>

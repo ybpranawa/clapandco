@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-});
-Route::get('home', function () {
-    return view('homepage');
-});
+Route::get('/', 'TransactionController@home');
+Route::get('home', 'TransactionController@home');
+
 Route::get('/register',function(){
     return view('register');
 });
@@ -43,3 +40,4 @@ Route::get('/editproduct','ProductController@editproduct');
 Route::post('/insertregister','AccountController@register');
 Route::post('/dologin','AccountController@login');
 Route::post('/doupload','ProductController@doupload');
+Route::post('/doedit','ProductController@doedit');
